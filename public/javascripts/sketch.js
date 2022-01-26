@@ -4,7 +4,7 @@ function setup() {
   var canvas = createCanvas(800, 475);
   canvas.parent("canvas");
   size = 40;
-  socket = io.connect('http://protected-lake-08845.herokuapp.com');
+  socket = io();
   socket.on('mouse',(data) => {
     fill(data.c);
     ellipse(data.x, data.y, data.s, data.s);
