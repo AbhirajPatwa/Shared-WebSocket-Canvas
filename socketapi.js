@@ -9,7 +9,7 @@ io.on( "connection", function( socket ) {
 
     socket.on('mouse', (data) => {
         socket.broadcast.emit('mouse', data);
-        console.log(data);
+        //console.log(data);
     });
 });
 // end of socket.io logic
