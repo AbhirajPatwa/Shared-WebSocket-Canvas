@@ -14,8 +14,14 @@ var helmet = require('helmet');
 
 var app = express();
 
-//app.use(helmet());
-// view engine setup
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'", 'code.jquery.com', 'stackpath.bootstrapcdn.com', 'cdn.jsdelivr.net', 'cdn.socket.io'],
+  }
+ }));
+ 
+ // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
