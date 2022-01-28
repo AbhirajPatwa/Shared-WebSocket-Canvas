@@ -1,6 +1,6 @@
 var socket;
 let colour = 'black';
-let a,b,c,d;
+let a,b,c,d,e;
 let slider;
 function setup() {
   var canvas = createCanvas(800, 475);
@@ -15,12 +15,13 @@ function setup() {
   b= createButton('green');
   c= createButton('blue');
   d= createButton('yellow');
+  e= createButton('white');
   a.mousePressed(function() {myFunction('red')});
   b.mousePressed(function() {myFunction('green')});
   c.mousePressed(function() {myFunction('blue')});
   d.mousePressed(function() {myFunction('yellow')});
-  d.mousePressed(function() {myFunction('white')});
-  slider = createSlider(10, 70, 40);
+  e.mousePressed(function() {myFunction('white')});
+  slider = createSlider(10, 100, 40);
 }
 
 function mouseDragged() {
