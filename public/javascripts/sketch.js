@@ -19,6 +19,7 @@ function setup() {
   b.mousePressed(function() {myFunction('green')});
   c.mousePressed(function() {myFunction('blue')});
   d.mousePressed(function() {myFunction('yellow')});
+  d.mousePressed(function() {myFunction('white')});
   slider = createSlider(10, 70, 40);
 }
 
