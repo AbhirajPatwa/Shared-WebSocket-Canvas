@@ -1,19 +1,30 @@
 var socket;
 let colour = 'black';
+let a,b,c,d;
+let slider;
 function setup() {
   var canvas = createCanvas(800, 475);
   canvas.parent("canvas");
   size = 40;
-  socket = io();
+  socket = io({ transports : ['websocket'] });
   socket.on('mouse',(data) => {
     fill(data.c);
     ellipse(data.x, data.y, data.s, data.s);
   })
-  
+  a= createButton('red');
+  b= createButton('green');
+  c= createButton('blue');
+  d= createButton('yellow');
+  a.mousePressed(function() {myFunction('red')});
+  b.mousePressed(function() {myFunction('green')});
+  c.mousePressed(function() {myFunction('blue')});
+  d.mousePressed(function() {myFunction('yellow')});
+  slider = createSlider(10, 70, 40);
 }
 
 function mouseDragged() {
-  //print(mouseX +','+mouseY);
+  size = slider.value();
+  print([mouseX, mouseY, colour, size]);
   var data= {
     x: int(mouseX),
     y: mouseY,
@@ -23,8 +34,11 @@ function mouseDragged() {
   socket.emit('mouse', data);
 }
 
-const mkColour = (c) => colour = c;
-const mkSize = (s) => size = s;
+function myFunction(c) {
+  colour = c;
+}
+
+function mkSize (s) {size = s;}
 
 function draw() {
   noStroke();
